@@ -183,12 +183,14 @@ function SetLxSirenStateForVeh(veh, newstate)
 					snd_lxsiren[veh] = GetSoundId()	
 					PlaySoundFromEntity(snd_lxsiren[veh], "VEHICLES_HORNS_SIREN_1", veh, 0, 0, 0)
 					TogMuteDfltSrnForVeh(veh, true)
+					print("code 3 - 1 for "..veh)
 				end
 				
 			elseif newstate == 2 then
 				snd_lxsiren[veh] = GetSoundId()
 				PlaySoundFromEntity(snd_lxsiren[veh], "VEHICLES_HORNS_SIREN_2", veh, 0, 0, 0)
 				TogMuteDfltSrnForVeh(veh, true)
+				print("code 3 - 2 for "..veh)
 			
 			elseif newstate == 3 then
 				snd_lxsiren[veh] = GetSoundId()
@@ -198,9 +200,11 @@ function SetLxSirenStateForVeh(veh, newstate)
 					PlaySoundFromEntity(snd_lxsiren[veh], "VEHICLES_HORNS_POLICE_WARNING", veh, 0, 0, 0)
 				end
 				TogMuteDfltSrnForVeh(veh, true)
+				print("code 3 - 3 for "..veh)
 				
 			else
 				TogMuteDfltSrnForVeh(veh, true)
+				print("code 2 for "..veh)
 				
 			end				
 				
@@ -258,7 +262,6 @@ function SetAirManuStateForVeh(veh, newstate)
 			elseif newstate == 3 then
 				snd_airmanu[veh] = GetSoundId()
 				PlaySoundFromEntity(snd_airmanu[veh], "VEHICLES_HORNS_SIREN_2", veh, 0, 0, 0)
-				
 			end				
 				
 			state_airmanu[veh] = newstate
@@ -443,10 +446,12 @@ Citizen.CreateThread(function()
 								if IsVehicleSirenOn(veh) then
 									PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 									SetVehicleSiren(veh, false)
+									print("Dflt siren off")
 								else
 									PlaySoundFrontend(-1, "NAV_LEFT_RIGHT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 									SetVehicleSiren(veh, true)
 									count_bcast_timer = delay_bcast_timer
+									print("Dflt siren on")
 								end		
 							
 							-- TOG LX SIREN
